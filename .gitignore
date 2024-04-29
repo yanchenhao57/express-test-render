@@ -1,0 +1,13 @@
+.cache/
+node_modules/
+public
+.DS_Store/
+/src/pages/detail_*
+**/.DS_Store
+
+/migrations/assets/
+.idea/
+
+/.vscode
+*.zip
+.DS_Store
