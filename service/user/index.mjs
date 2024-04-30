@@ -1,8 +1,9 @@
-import { HttpRequest } from "@mc/request"
-// const { HttpRequest } = pkg;
+import pkg from "@mc/request"
+const { HttpRequest } = pkg;
 // TODO: 定义接口响应的数据类型
 const abstractAPI = async (url, data, method) => {
     const response = await HttpRequest.request({
+        // baseURL: 'https://wqez9thzpl.execute-api.ap-northeast-1.amazonaws.com/Dev',
         baseURL: 'https://wqez9thzpl.execute-api.ap-northeast-1.amazonaws.com/Test',
         method,
         url,
