@@ -17,6 +17,13 @@ app.post('/mode', (req, res) => {
     }
 });
 
+app.post('/youtube-summarizer', (req, res) => {
+    const { videoUrl } = req.body;
+    console.log("🚀 ~ app.post ~ videoUrl:", videoUrl)
+    // Logic to summarize the video
+    res.send({ summary: 'This is a summary of the video.' });
+})
+
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
