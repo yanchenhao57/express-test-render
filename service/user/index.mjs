@@ -1,5 +1,5 @@
-import pkg from "@mc/request"
-const { HttpRequest } = pkg;
+import { HttpRequest } from "@mc/request"
+// const { HttpRequest } = pkg;
 // TODO: 定义接口响应的数据类型
 const abstractAPI = async (url, data, method) => {
     const response = await HttpRequest.request({
