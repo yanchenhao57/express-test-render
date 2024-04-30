@@ -1,0 +1,54 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Select a mode",
+    "description": "Select a mode to do something",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://express-test-render-qfl2.onrender.com"
+    }
+  ],
+  "paths": {
+    "/mode": {
+      "post": {
+        "description": "Give me a mode",
+        "operationId": "GiveMeAMode",
+        "parameters": [
+          {
+            "name": "mode",
+            "in": "body",
+            "description": "The mode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/youtube-summarizer": {
+      "post": {
+        "description": "Summarize a youtube video",
+        "operationId": "SummarizeYoutubeVideo",
+        "parameters": [
+          {
+            "name": "videoUrl",
+            "in": "body",
+            "description": "The youtube video url",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

@@ -1,15 +1,17 @@
 {
+  "type": "module",
   "name": "express-test-render",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "main.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "node main.mjs"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mc/request": "^3.1.6",
     "express": "^4.19.2"
   }
 }
