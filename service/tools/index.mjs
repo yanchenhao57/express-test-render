@@ -4,7 +4,8 @@ import { HttpRequest } from "@mc/request"
 const abstractAPI = async (url, data, method, headers) => {
     const response = await HttpRequest.request({
         // baseURL: 'https://mgvha6r4sa.execute-api.ap-northeast-1.amazonaws.com/Dev',
-        baseURL: 'https://mgvha6r4sa.execute-api.ap-northeast-1.amazonaws.com/Test',
+        // baseURL: 'https://mgvha6r4sa.execute-api.ap-northeast-1.amazonaws.com/Test',
+        baseURL: 'https://apigateway-mc-media-tool-ap.notta.io',
         method,
         url,
         data,
