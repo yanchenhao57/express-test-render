@@ -10,32 +10,22 @@ const { createYoutubeSummarize } = toolsService;
 const app = express();
 app.use(express.json()); // Middleware to parse JSON bodies
 
-const modeToString = {
-    'easy': 'Easy Mode Activated!',
-    'medium': 'Welcome to Medium Mode!',
-    'hard': 'You are now in Hard Mode!'
-};
-
-app.post('/mode', (req, res) => {
-    const { mode } = req.body; // Extract 'mode' from the JSON body
-    if (modeToString[mode]) {
-        res.send({ message: modeToString[mode] });
-    } else {
-        res.status(400).send({ message: 'Invalid mode provided.' });
-    }
-});
-
 app.post('/youtube-summarizer', async (req, res) => {
     const { url } = req.body;
-    console.log("🚀 ~ app.post ~ req.body:", req.body)
-    await getGuestInfo();
-    const fetchData = await createYoutubeSummarize({ url, language: 'en-US', email: '' });
-    const { task_id } = fetchData.data;
-    const resUrl = `${WEB_APP_HOST}/youtube-summarizer/check-out/${task_id}?lang=en&from=gpts&transcription_type=youtube_summarizer&module=checkout`
-    console.log("🚀 ~ app.post ~ data:", fetchData);
+    let resStr = '';
+    try {
+        await getGuestInfo();
+        const fetchData = await createYoutubeSummarize({ url, language: 'en-US', email: '' });
+        const { task_id } = fetchData.data;
+        resStr = `You can view your YouTube summary at the link below: ${WEB_APP_HOST}/youtube-summarizer/check-out/${task_id}?lang=en&from=gpts&transcription_type=youtube_summarizer&module=checkout`
+        console.log("🚀 ~ app.post ~ data:", fetchData);
+    } catch (error) {
+        console.log("🚀 ~ app.post ~ error:", error);
+        resStr = 'An error occurred while processing your request. Please try again later.';
+    }
 
     // Logic to summarize the video
-    res.send({ summary: `You can check your summarize in ${resUrl}` });
+    res.send({ data: resStr });
 })
 
 app.get("/test", (req, res) => {
