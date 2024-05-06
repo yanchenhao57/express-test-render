@@ -17,9 +17,13 @@ app.post('/youtube-summarizer', async (req, res) => {
     try {
         await getGuestInfo();
         const fetchData = await createYoutubeSummarize({ url, language: 'en-US', email: '' });
-        const { task_id } = fetchData.data;
-        resStr = `You can view your YouTube summary at the link below: ${WEB_APP_HOST}/youtube-summarizer/check-out/${task_id}?lang=en&from=gpts&transcription_type=youtube_summarizer&module=checkout`
-        console.log("🚀 ~ app.post ~ data:", fetchData);
+        console.log("🚀 ~ app.post ~ fetchData:", fetchData);
+        if (fetchData.code === 0) {
+            const { task_id } = fetchData.data;
+            resStr = `You can view your YouTube summary at the link below: ${WEB_APP_HOST}/youtube-summarizer/check-out/${task_id}?lang=en&from=gpts&transcription_type=youtube_summarizer&module=checkout`
+        } else {
+            resStr = `An error occurred while processing your request. Please try again later.`
+        }
     } catch (error) {
         console.log("🚀 ~ app.post ~ error:", error);
         resStr = 'An error occurred while processing your request. Please try again later.';
