@@ -2,9 +2,9 @@ import express from 'express'
 import userService from "./service/user/index.mjs"
 import toolsService from "./service/tools/index.mjs"
 
-// const WEB_APP_HOST = 'https://dev-c0ee1fac76df136a.notta.ai'
+const WEB_APP_HOST = 'https://dev-c0ee1fac76df136a.notta.ai'
 // const WEB_APP_HOST = 'https://test-app-12154205867b06a3.notta.ai'
-const WEB_APP_HOST = 'https://app.notta.ai'
+// const WEB_APP_HOST = 'https://app.notta.ai'
 
 const { getGuestInfo } = userService;
 const { createYoutubeSummarize } = toolsService;
